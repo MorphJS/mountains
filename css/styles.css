@@ -1,0 +1,214 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  color: #1c1c1c;
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 4px;
+  background: #ff7a3d;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 5%;
+  color: white;
+}
+
+header.scrolled {
+  background: #1c1c1c;
+}
+
+nav a {
+  padding: 8px 16px;
+  border-radius: 20px;
+}
+
+nav a.active {
+  background: white;
+  color: #1c1c1c;
+}
+
+nav a.external {
+  background: #ff7a3d;
+  color: #1c1c1c;
+}
+
+#hero {
+  height: 600px;
+}
+
+.btn {
+  display: inline-block;
+  background: #ff7a3d;
+  padding: 14px 28px;
+  border-radius: 25px;
+}
+
+section {
+  padding: 80px 5%;
+}
+
+.cards,
+.trio,
+.split {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  gap: 24px;
+}
+
+.card,
+figure {
+  flex: 1;
+  border-radius: 16px;
+  box-shadow: 0 5px 20px rgba(28, 28, 28, 0.15);
+  overflow: hidden;
+}
+
+.card {
+  background: #eeeeee;
+  padding: 30px;
+  text-align: center;
+}
+
+.icon {
+  width: 50px;
+  height: 50px;
+  margin: 0 auto 20px;
+  border: 2px solid #ff7a3d;
+  border-radius: 50%;
+  line-height: 46px;
+  color: #ff7a3d;
+}
+
+h2 {
+  font-size: 36px;
+  margin-bottom: 16px;
+}
+
+h3 {
+  margin-bottom: 8px;
+}
+
+.split {
+  align-items: center;
+  gap: 60px;
+}
+
+.about-text,
+.about-image {
+  flex: 1;
+}
+
+.about-image {
+  height: 550px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.eyebrow {
+  color: #ff7a3d;
+  font-weight: bold;
+}
+
+.exp-box {
+  background: #1c1c1c;
+  color: white;
+  border-radius: 16px;
+  padding: 28px;
+  margin: 30px 0;
+}
+
+.big {
+  font-size: 56px;
+  font-weight: bold;
+}
+
+.stats {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 30px;
+}
+
+.stat strong {
+  display: block;
+  font-size: 30px;
+}
+
+.banner {
+  text-align: center;
+  background: #1c1c1c;
+  color: white;
+}
+
+.banner h2 {
+  font-size: 48px;
+}
+
+.photo {
+  padding: 120px 5%;
+  background: linear-gradient(rgba(28, 28, 28, 0.6), rgba(28, 28, 28, 0.6)), url("../images/sunset.jpg") center / cover;
+}
+
+footer {
+  padding: 50px 5%;
+}
+
+footer h2 {
+  font-size: 24px;
+  margin: 0;
+}
+
+.photo-box {
+  height: 400px;
+}
+
+figcaption {
+  padding: 20px;
+}
+
+@media (max-width: 800px) {
+  header {
+    flex-direction: column;
+  }
+
+  .cards,
+  .trio,
+  .split,
+  .stats {
+    flex-direction: column;
+  }
+
+  .about-image {
+    flex: none;
+    height: 350px;
+  }
+}
