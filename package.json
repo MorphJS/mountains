@@ -1,0 +1,13 @@
+{
+  "name": "montanismo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Sitio de montañismo: Cumbres del Mundo",
+  "scripts": {
+    "dev": "live-server --port=3000 --open=/index.html",
+    "start": "npm run dev"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}
