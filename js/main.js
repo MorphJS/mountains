@@ -2,7 +2,6 @@ var header = document.querySelector('header');
 var bar = document.getElementById('progress');
 var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-/* Header sólido al salir de la parte superior (sin listener de scroll) */
 var sentinel = document.createElement('div');
 sentinel.style.cssText = 'position:absolute;top:0;left:0;width:1px;height:60px;pointer-events:none';
 document.body.prepend(sentinel);
@@ -11,7 +10,6 @@ new IntersectionObserver(function (entries) {
   header.classList.toggle('scrolled', !entries[0].isIntersecting);
 }).observe(sentinel);
 
-/* Barra de progreso */
 var ticking = false;
 window.addEventListener('scroll', function () {
   if (ticking) return;
@@ -23,13 +21,14 @@ window.addEventListener('scroll', function () {
   });
 }, { passive: true });
 
-/* Aparición progresiva de las secciones al entrar en pantalla */
 var revealTargets = document.querySelectorAll(
   '.card, .about-text > *, .about-image, section.banner h2, section.banner p, figure'
 );
 
 if (reduceMotion || !('IntersectionObserver' in window)) {
-  revealTargets.forEach(function (el) { el.classList.add('in'); });
+  revealTargets.forEach(function (el) {
+    el.classList.add('in');
+  });
 } else {
   var revealObserver = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
@@ -47,13 +46,13 @@ if (reduceMotion || !('IntersectionObserver' in window)) {
   });
 }
 
-/* Contadores: arrancan al verse y desaceleran al llegar al valor */
 function animateCount(el) {
   var target = Number(el.dataset.count);
   if (reduceMotion) {
     el.textContent = target;
     return;
   }
+
   var duration = 1600;
   var start = performance.now();
 
@@ -75,5 +74,8 @@ if ('IntersectionObserver' in window) {
       countObserver.unobserve(entry.target);
     });
   }, { threshold: 0.6 });
-  counters.forEach(function (el) { countObserver.observe(el); });
+
+  counters.forEach(function (el) {
+    countObserver.observe(el);
+  });
 }

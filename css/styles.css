@@ -1,80 +1,376 @@
-:root { --dark: #12161a; --accent: #ff7a3d; --soft: #4a5560; --shadow: 0 10px 24px -10px rgba(18, 40, 60, 0.3); }
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body { font-family: "Segoe UI", Arial, sans-serif; background: #f6f7f8; color: #15191c; line-height: 1.65; }
-a { color: inherit; text-decoration: none; }
-img { display: block; width: 100%; height: 100%; object-fit: cover; transition: 0.8s; }
-h2 { font-size: clamp(30px, 4vw, 40px); line-height: 1.15; margin-bottom: 16px; }
-h3 { margin-bottom: 8px; }
-p { max-width: 65ch; color: var(--soft); }
+:root {
+  --dark: #12161a;
+  --accent: #ff7a3d;
+  --soft: #4a5560;
+  --shadow: 0 10px 24px -10px rgba(18, 40, 60, 0.3);
+}
 
-/* Header */
-#progress { position: fixed; top: 0; left: 0; z-index: 30; width: 0; height: 4px; background: var(--accent); }
-header { position: fixed; top: 0; z-index: 20; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 16px 5%; color: white; transition: 0.4s; }
-header.scrolled { background: rgba(18, 22, 26, 0.85); backdrop-filter: blur(12px); padding: 10px 5%; }
-.logo { display: flex; align-items: center; gap: 10px; font-size: 20px; font-weight: bold; }
-.logo::before { content: ""; width: 30px; height: 30px; background: url("../images/favicon.svg") center / contain no-repeat; }
-nav a { display: inline-block; padding: 8px 16px; border-radius: 20px; transition: 0.3s; }
-nav a:hover { background: rgba(255, 255, 255, 0.2); transform: translateY(-2px); }
-nav a.active { background: white; color: var(--dark); }
-nav a.external { background: var(--accent); color: var(--dark); }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-/* Hero */
-#hero { position: relative; height: 100vh; min-height: 480px; overflow: hidden; }
-#hero::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(rgba(8, 14, 24, 0.55), transparent 25%); }
-#hero a { display: block; height: 100%; }
-#hero img { object-position: center 30%; }
-#hero a:hover img { transform: scale(1.06); filter: brightness(1.1); }
+html {
+  scroll-behavior: smooth;
+}
 
-/* Layout y tarjetas */
-section { padding: 96px 5%; }
-.cards, .trio, .split { max-width: 1100px; margin: 0 auto; display: flex; gap: 24px; }
-.split { align-items: center; gap: 64px; }
-.card, figure, .about-text, .about-image { flex: 1; }
-.card, figure { background: white; border-radius: 16px; box-shadow: var(--shadow); overflow: hidden; transition: 0.4s; }
-.card:hover, figure:hover { transform: translateY(-6px); }
-.card { padding: 36px 30px; text-align: center; }
-.card p { margin: 0 auto; }
-.icon { width: 52px; height: 52px; margin: 0 auto 20px; border: 2px solid var(--accent); border-radius: 50%; line-height: 48px; color: #b84a12; transition: 0.4s; }
-.card:hover .icon { background: var(--accent); color: var(--dark); transform: rotate(360deg); }
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #f6f7f8;
+  color: #15191c;
+  line-height: 1.65;
+}
 
-/* About */
-.about-image { height: 550px; border-radius: 16px; box-shadow: var(--shadow); overflow: hidden; }
-.about-image img { filter: grayscale(100%); }
-.about-image:hover img { transform: scale(1.1); filter: grayscale(0); }
-.eyebrow { color: #b84a12; font-size: 13px; font-weight: bold; letter-spacing: 0.12em; text-transform: uppercase; }
-.exp-box { background: var(--dark); border-radius: 16px; padding: 28px; margin: 32px 0; }
-.exp-box p { color: #ccc; }
-.big { font-size: clamp(44px, 6vw, 60px); font-weight: bold; line-height: 1.1; color: var(--accent); }
-.stats { display: flex; gap: 40px; margin-bottom: 32px; }
-.stat strong { display: block; font-size: 32px; }
-.stat span { color: var(--soft); font-size: 14px; }
-.btn { display: inline-block; background: var(--accent); color: var(--dark); padding: 14px 30px; border-radius: 25px; font-weight: 600; transition: 0.3s; }
-.btn:hover { transform: translateY(-3px); }
+a {
+  color: inherit;
+  text-decoration: none;
+}
 
-/* Banners, galería y footer */
-.banner { text-align: center; background: var(--dark); color: white; }
-.banner h2 { font-size: clamp(32px, 5.5vw, 52px); }
-.banner p { margin: 0 auto; font-size: 18px; color: #ddd; }
-.photo { padding: 140px 5%; background: linear-gradient(rgba(12, 16, 20, 0.65), rgba(12, 16, 20, 0.65)), url("../images/sunset.jpg") center / cover; }
-footer { padding: 22px 5%; border-top: 2px solid var(--accent); }
-footer.banner h2 { font-size: 16px; font-weight: 600; margin: 0; color: white; }
-.photo-box { height: 400px; overflow: hidden; }
-figcaption { padding: 22px 24px 26px; }
-figure:hover img { transform: scale(1.12); }
-figure:nth-child(1):hover img { filter: sepia(60%); }
-figure:nth-child(2):hover img { transform: scale(1.12) rotate(2deg); filter: brightness(1.15); }
-figure:nth-child(3):hover img { filter: grayscale(100%); }
+img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.8s;
+}
 
-/* Aparición al hacer scroll (main.js) */
-.reveal { opacity: 0; transform: translateY(28px); transition: 0.8s var(--delay, 0s); }
-.reveal.in { opacity: 1; transform: none; }
-.card.in:hover, figure.in:hover { transform: translateY(-6px); transition: 0.4s; }
+h2 {
+  font-size: clamp(30px, 4vw, 40px);
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+
+h3 {
+  margin-bottom: 8px;
+}
+
+p {
+  max-width: 65ch;
+  color: var(--soft);
+}
+
+#progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 30;
+  width: 0;
+  height: 4px;
+  background: var(--accent);
+}
+
+header {
+  position: fixed;
+  top: 0;
+  z-index: 20;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 5%;
+  color: white;
+  transition: 0.4s;
+}
+
+header.scrolled {
+  background: rgba(18, 22, 26, 0.85);
+  backdrop-filter: blur(12px);
+  padding: 10px 5%;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.logo::before {
+  content: "";
+  width: 30px;
+  height: 30px;
+  background: url("../images/favicon.svg") center / contain no-repeat;
+}
+
+nav a {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 20px;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+nav a.active {
+  background: white;
+  color: var(--dark);
+}
+
+nav a.external {
+  background: var(--accent);
+  color: var(--dark);
+}
+
+#hero {
+  position: relative;
+  height: 100vh;
+  min-height: 480px;
+  overflow: hidden;
+}
+
+#hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(rgba(8, 14, 24, 0.55), transparent 25%);
+}
+
+#hero a {
+  display: block;
+  height: 100%;
+}
+
+#hero img {
+  object-position: center 30%;
+}
+
+#hero a:hover img {
+  transform: scale(1.06);
+  filter: brightness(1.1);
+}
+
+section {
+  padding: 96px 5%;
+}
+
+.cards, .trio, .split {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  gap: 24px;
+}
+
+.split {
+  align-items: center;
+  gap: 64px;
+}
+
+.card, figure, .about-text, .about-image {
+  flex: 1;
+}
+
+.card, figure {
+  background: white;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: 0.4s;
+}
+
+.card:hover, figure:hover {
+  transform: translateY(-6px);
+}
+
+.card {
+  padding: 36px 30px;
+  text-align: center;
+}
+
+.card p {
+  margin: 0 auto;
+}
+
+.icon {
+  width: 52px;
+  height: 52px;
+  margin: 0 auto 20px;
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  line-height: 48px;
+  color: #b84a12;
+  transition: 0.4s;
+}
+
+.card:hover .icon {
+  background: var(--accent);
+  color: var(--dark);
+  transform: rotate(360deg);
+}
+
+.about-image {
+  height: 550px;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.about-image img {
+  filter: grayscale(100%);
+}
+
+.about-image:hover img {
+  transform: scale(1.1);
+  filter: grayscale(0);
+}
+
+.eyebrow {
+  color: #b84a12;
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.exp-box {
+  background: var(--dark);
+  border-radius: 16px;
+  padding: 28px;
+  margin: 32px 0;
+}
+
+.exp-box p {
+  color: #ccc;
+}
+
+.big {
+  font-size: clamp(44px, 6vw, 60px);
+  font-weight: bold;
+  line-height: 1.1;
+  color: var(--accent);
+}
+
+.stats {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 32px;
+}
+
+.stat strong {
+  display: block;
+  font-size: 32px;
+}
+
+.stat span {
+  color: var(--soft);
+  font-size: 14px;
+}
+
+.btn {
+  display: inline-block;
+  background: var(--accent);
+  color: var(--dark);
+  padding: 14px 30px;
+  border-radius: 25px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+}
+
+.banner {
+  text-align: center;
+  background: var(--dark);
+  color: white;
+}
+
+.banner h2 {
+  font-size: clamp(32px, 5.5vw, 52px);
+}
+
+.banner p {
+  margin: 0 auto;
+  font-size: 18px;
+  color: #ddd;
+}
+
+.photo {
+  padding: 140px 5%;
+  background: linear-gradient(rgba(12, 16, 20, 0.65), rgba(12, 16, 20, 0.65)), url("../images/sunset.jpg") center / cover;
+}
+
+footer {
+  padding: 22px 5%;
+  border-top: 2px solid var(--accent);
+}
+
+footer.banner h2 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+  color: white;
+}
+
+.photo-box {
+  height: 400px;
+  overflow: hidden;
+}
+
+figcaption {
+  padding: 22px 24px 26px;
+}
+
+figure:hover img {
+  transform: scale(1.12);
+}
+
+figure:nth-child(1):hover img {
+  filter: sepia(60%);
+}
+
+figure:nth-child(2):hover img {
+  transform: scale(1.12) rotate(2deg);
+  filter: brightness(1.15);
+}
+
+figure:nth-child(3):hover img {
+  filter: grayscale(100%);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: 0.8s var(--delay, 0s);
+}
+
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+.card.in:hover, figure.in:hover {
+  transform: translateY(-6px);
+  transition: 0.4s;
+}
 
 @media (max-width: 800px) {
-  header { flex-direction: column; gap: 8px; }
-  section { padding: 64px 5%; }
-  .cards, .trio, .split, .stats { flex-direction: column; gap: 24px; }
-  .about-image { flex: none; height: 350px; }
-  .photo-box { height: 320px; }
+  header {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  section {
+    padding: 64px 5%;
+  }
+
+  .cards, .trio, .split, .stats {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .about-image {
+    flex: none;
+    height: 350px;
+  }
+
+  .photo-box {
+    height: 320px;
+  }
 }
